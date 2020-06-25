@@ -7,18 +7,19 @@ struct node *next;
 };
 
 struct node *start = NULL;
-struct node *create_ll(struct node *);
+struct node* create_ll(struct node *);
 struct node *display(struct node *);
 struct node *insert_beg(struct node *);
 struct node *insert_end(struct node *);
-struct node *insert_before(struct node *);
-struct node *insert_after(struct node *);
-struct node *delete_beg(struct node *);
-struct node *delete_end(struct node *);
-struct node *delete_node(struct node *);
-struct node *delete_after(struct node *);
-struct node *delete_list(struct node *);
-struct node *sort_list(struct node *);
+struct node *reverse(struct node *);
+//struct node *insert_before(struct node *);
+//struct node *insert_after(struct node *);
+//struct node *delete_beg(struct node *);
+//struct node *delete_end(struct node *);
+//struct node *delete_node(struct node *);
+//struct node *delete_after(struct node *);
+//struct node *delete_list(struct node *);
+//struct node *sort_list(struct node *);
 
 
 int main (){
@@ -29,7 +30,7 @@ do{
     printf("\nChoose 2 to display the linked list");
     printf("\nChoose 3 to add a node at the beginning");
     printf("\nChoose 4 to add a node at the end");
-    printf("\nChoose 5 to insert node before a node");
+    printf("\nChoose 5 to reverse the linked list");
     printf("\nChoose 6 to insert a node after a node");
     printf("\nChoose 7 to delete beginning node");
     printf("\nChoose 8 to delete last node");
@@ -49,22 +50,22 @@ do{
 		break;
 	case 4: start = insert_end(start);
 		break;
-	case 5: start = insert_before(start);
+	case 5: start = reverse(start);
 		break;
-	case 6: start = insert_after(start);
-		break;
-	case 7: start = delete_beg(start);
-		break;
-	case 8: start = delete_end(start);
-		break;
-	case 9: start = delete_node(start);
-		break;
-	case 10: start = delete_after(start);
-		break;
-	case 11: start = delete_list(start);
-		break;
-	case 12: start = sort_list(start);
-		break;
+//	case 6: start = insert_after(start);
+//		break;
+//	case 7: start = delete_beg(start);
+//		break;
+//	case 8: start = delete_end(start);
+//		break;
+//	case 9: start = delete_node(start);
+//		break;
+//	case 10: start = delete_after(start);
+//		break;
+//	case 11: start = delete_list(start);
+//		break;
+//	case 12: start = sort_list(start);
+//		break;
     }
 }while(num !=13);
 }
@@ -130,7 +131,26 @@ struct node *insert_end(struct node *start){
     ptr -> next = new_node;
     return start;
 };
+struct node *reverse(struct node *start){
+	struct node *stack, *ptr, *new_node;
+	stack = NULL;
+	ptr = start;
+	if (ptr == NULL)
+		printf("EMPTY LINKED LIST");
+	else{
+		while (ptr != NULL){
+			new_node = (struct node *)malloc(sizeof(struct node));
+			new_node -> data = ptr -> data;
+			if (stack == NULL){
+				new_node -> next = NULL;
+				stack = new_node;
+			}else{
+				new_node -> next = stack;
+				stack = new_node;
+			}
+			ptr = ptr ->next;
+		}
+	}
+	return stack;
+}
 
-struct node *insert_before(struct node start){
-    struct node 
-};
